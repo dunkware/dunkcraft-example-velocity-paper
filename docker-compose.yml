@@ -1,0 +1,35 @@
+name: velocity-mc
+services:
+  mc:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"  # Required when behind Velocity proxy
+      TYPE: PAPER  # Using Paper for better performance
+      VELOCITY_SECRET: "5v8y/B?E(H+MbQeThWmZq4t7w!z%C&F)"  # Must match forwarding.secret
+      ENABLE_VELOCITY_SUPPORT: "TRUE"  # Enable Velocity modern forwarding
+      PAPER_VELOCITY_ENABLED: "true"
+      SKIP_DOWNLOADS: "true"
+      PAPER_VELOCITY_ONLINE_MODE: "false" 
+      PAPER_VELOCITY_SECRET: "5v8y/B?E(H+MbQeThWmZq4t7w!z%C&F)"
+    volumes:
+      - ./paper-global.yml:/config/paper-global.yml
+      - mc-data:/data
+
+  proxy:
+    image: itzg/mc-proxy
+    environment:
+      TYPE: VELOCITY  # Specify we want to use Velocity proxy
+      ENABLE_RCON: "false"  # Enable RCON for server management
+    ports:
+      - "25565:25577"  # Map the proxy port to standard Minecraft port
+    volumes:
+      - ./velocity.toml:/config/velocity.toml:ro
+      - ./forwarding.secret:/config/forwarding.secret:ro
+      - proxy-data:/server
+    depends_on:
+      - mc
+
+volumes:
+  mc-data: {}
+  proxy-data: {}

@@ -1,0 +1,79 @@
+# Config version. Do not change this
+config-version = "2.7"
+
+# What port should the proxy be bound to? By default, we'll bind to all addresses on port 25577.
+bind = "0.0.0.0:25577"
+
+# What should be the MOTD? This gets displayed when the player adds your server to
+# their server list. Only MiniMessage format is accepted.
+motd = "<#09add3>Powered by Docker"
+
+# What should we display for the maximum number of players?
+show-max-players = 500
+
+# Should we authenticate players with Mojang? By default, this is on.
+online-mode = false
+
+# Should the proxy enforce the new public key security standard? By default, this is on.
+force-key-authentication = false
+
+# Allow VPN connections
+prevent-client-proxy-connections = false
+
+# Use modern forwarding for player info (Minecraft 1.13+)
+player-info-forwarding-mode = "modern"
+
+# Secret file for secure forwarding
+forwarding-secret-file = "forwarding.secret"
+
+# If you run a modded server, set this to true
+announce-forge = false
+
+# Don't kick existing players on duplicate login
+kick-existing-players = false
+
+# Server list ping handling
+ping-passthrough = "DISABLED"
+
+# Enable player address logging
+enable-player-address-logging = true
+
+[servers]
+# Configure your servers here
+minecraft = "mc:25565"
+
+# Try list - order of servers to try when player joins
+try = [
+  "minecraft"
+]
+
+[forced-hosts]
+# Force specific domains to specific servers
+"localhost" = [
+  "minecraft"
+]
+
+[advanced]
+# Compression settings
+compression-threshold = 256
+compression-level = -1
+
+# Connection settings
+login-ratelimit = 3000
+connection-timeout = 5000
+read-timeout = 30000
+
+# Additional features
+haproxy-protocol = false
+tcp-fast-open = false
+bungee-plugin-message-channel = true
+show-ping-requests = false
+failover-on-unexpected-server-disconnect = true
+announce-proxy-commands = true
+
+[query]
+# GameSpy query protocol settings
+enabled = false
+port = 25577
+map = "Velocity"
+show-plugins = false
