@@ -4,7 +4,7 @@ A production-ready example demonstrating the integration of Velocity proxy with 
 
 ## Overview
 
-This repository serves as a reference implementation for setting up a robust Minecraft server infrastructure using Velocity as a proxy server in conjunction with Paper Minecraft server. The setup addresses several common integration challenges and provides solutions for a reliable deployment.
+This repository serves as a reference implementation for setting up a robust Minecraft server infrastructure using Velocity as a proxy server in conjunction with Paper Minecraft server. The setup addresses several common integration challenges and provides solutions for a reliable deployment. There are existing demos out there, that all did not work this one took me all night throught I would pust it for reference. The key things are getting environment variables to work in the docker-compose the correct configuration of many values for the proxy to talk to the back end server includes online-mode:false in server.properties, quite q few little things without great feedback on errors hope it helps someone. 
 
 ## Common Integration Challenges and Solutions
 
